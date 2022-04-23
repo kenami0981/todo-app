@@ -1,1 +1,97 @@
-/* You can add global styles to this file, and also import other style files */
+
+* {
+    font-family:monospace;
+    margin: 0%;
+}
+.pasek {
+    background-color: #6A37ec;
+    height: 60px;
+    display: flex;
+
+
+    
+}
+.name-of-app {
+    color: white;
+    font-weight: bold;
+    margin-left: 150px;
+    font-size: 2em;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.date {
+    margin-top: 30px;
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    margin-left: 130px;
+    border-bottom:1px solid #888585;
+
+}
+.today {
+    font-weight: bold;
+    font-size: 3.5em;
+    margin-right: 50px;
+    float:left;
+}
+.current-date {
+    
+    margin-top:10px;
+}
+.box {
+   
+    height: 35rem;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+
+}
+.main {
+    font-weight: bold;
+    font-size: 3.4em;
+    margin-bottom: 20px;
+}
+.submain {
+    font-size: 1.7em;
+    margin-bottom: 60px;
+}
+.myButton {
+    width: 160px;
+    height: 50px;
+	box-shadow: 3px -4px 0px 2px #9fb4f2;
+	background:linear-gradient(to bottom, #7749ec 5%, #6837e4 100%);
+	background-color:#7749ec;
+	border-radius:6px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-size:20px;
+	padding:10px 23px;
+	text-decoration:none;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #6837e4 5%, #7749ec 100%);
+	background-color:#7749ec;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+.rowimg {
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.img {
+    padding: 10%;
+    width: 480px;
+    height: 320px;
+
+}
