@@ -1,1 +1,12 @@
-<ul><li *ngFor="let item of list$ | async">{{ item | json}}</li></ul>
+
+<div *ngFor="let item of list$ | async">
+    <input type="radio" id="gender_Male" value="Male">{{ item.name | json}}
+</div>
+<div id="newTask" style="display: none;">
+    <form [formGroup]="addTask" (ngSubmit)="onAddTaskSubmited(addTask)">
+        <input type="text" formControlName="name" placeholder="Name">
+        <button type="submit" (click)="orderUp()">Submit</button>
+    </form>
+</div>
+ 
+<button class="myButton add-task-button" (click)="show()">Add task</button>

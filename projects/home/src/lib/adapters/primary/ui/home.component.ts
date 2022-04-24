@@ -1,7 +1,6 @@
 import { Component, ViewEncapsulation, ChangeDetectionStrategy, OnInit } from '@angular/core';
-
+var test = 1;
 @Component({ selector: 'lib-home', templateUrl: './home.component.html', encapsulation: ViewEncapsulation.None, changeDetection: ChangeDetectionStrategy.OnPush })
-
 export class HomeComponent implements OnInit{
     ngOnInit() {
         today()

@@ -3,4 +3,5 @@ export interface ListDTO {
   readonly name: string;
   readonly class: string;
   readonly attribute: string;
+  readonly order:number;
 }
