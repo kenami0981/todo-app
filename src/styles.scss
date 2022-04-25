@@ -62,9 +62,9 @@
     margin-bottom: 60px;
 }
 .myButton {
-    width: 160px;
-    height: 50px;
-	box-shadow: 3px -4px 0px 2px #9fb4f2;
+    width: 150px;
+    height: 45px;
+	box-shadow: 2px -3px 0px 1px #9fb4f2;
 	background:linear-gradient(to bottom, #7749ec 5%, #6837e4 100%);
 	background-color:#7749ec;
 	border-radius:6px;
@@ -94,4 +94,52 @@
     width: 480px;
     height: 320px;
 
+}
+.textarea {
+    margin-left: 130px;
+    width: 530px;
+    height: 110px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    padding: 10px;
+    font-size: 1.2em;
+    border-radius: 8px;
+
+}
+#HomeButton {
+    margin-left: 130px;
+    margin-right: 20px;
+}
+#CancelButton {
+    box-shadow: 2px -3px 0px 1px gray;
+	background-color:rgba(255, 255, 255, 0.781);
+    border: #888585;
+    width: 150px;
+    height: 45px;
+	border-radius:6px;
+	display:inline-block;
+	cursor:pointer;
+	color: gray;
+	font-size:20px;
+	padding:10px 23px;
+	text-decoration:none;
+    border: 2px solid gray;
+    margin-right: 20px;
+}
+#CancelButton:hover {
+	background-color:white;
+    color: rgba(128, 128, 128, 0.74);
+}
+.listshow {
+    margin-left: 130px;
+    border-bottom:1px solid #888585;
+
+    padding-bottom: 40px;
+    padding-top: 40px;
+}
+.ButtonMargin {
+    margin-left: 130px;
+}
+.task {
+    margin-bottom: 20px ;
 }

@@ -5,10 +5,19 @@
     <div id="current-date" class="col-sm-2 current-date fs-4"></div>
 </div>
 <div class="conainer">
-    <div class="box">
+    <div class="box" id="box">
         <div class="main">Get a clear view of the day ahead</div>
         <div class="submain">All your tasks that are due today will show up here.</div>
-        <a href="/todo-list" ><button class="myButton add-task-button">Add task</button></a>
+        <button (click)="firstTask()" class="myButton add-task-button">Add task</button>
+    </div>
+    <div class="box" id="homeTask" style="display: none">
+        <form [formGroup]="homeForm" (ngSubmit)="onHomeAddTaskHomesubmited(homeForm)">
+            <textarea id="TextFromTextarea" class="textarea" type="text" formControlName="name" placeholder="Write your message here"></textarea><br>
+            <button type="submit" id="HomeButton" class="myButton">Add Task</button>
+            <button id="CancelButton" (click)="HomeHref()">Cancel</button>
+            <button id="CancelButton" (click)="TodoListHref()">Task list</button>
+            
+        </form>
     </div>
     <div class="rowimg">
     <div class="co">

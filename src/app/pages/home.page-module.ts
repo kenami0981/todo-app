@@ -15,7 +15,7 @@ import { FirebaseTodoAppServiceModule } from '../../../projects/home/src/lib/ada
       ]),
   HomeComponentModule,
   TodoListComponentModule,
-  FirebaseTodoAppServiceModule
+  FirebaseTodoAppServiceModule,
 ],
   	declarations: [HomePage],
   	providers: [],

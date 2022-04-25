@@ -8,6 +8,25 @@ import { map } from 'rxjs/operators';
 @Component({ selector: 'lib-todo-list', templateUrl: './todo-list.component.html', encapsulation: ViewEncapsulation.None, changeDetection: ChangeDetectionStrategy.OnPush })
 
 export class TodoListComponent {
+  ngOnInit() {
+    today()
+    function today() {
+        var today = new Date()
+        const x = document.getElementById("current-date");
+        const monthNames = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+        ];
+        const weekNames = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+        var day = today.getDay()
+        if (x!==null) {
+            if (day==0) {
+                day=7
+                
+            }
+            x.innerHTML=(weekNames[day-1])?.substring(0,3)+" "+today.getDate()+" "+((monthNames[today.getMonth()])?.substring(0,3)).toUpperCase();
+        }
+}
+}
   
   
   list$: Observable<ListDTO[]> = this._getsAllListDto.getAll().pipe(map((list: ListDTO[]) =>
@@ -41,8 +60,12 @@ export class TodoListComponent {
   }
   show() {
     var x = document.getElementById("newTask")!;
+    var HomeButton = document.getElementById("HomeButton")!;
     if (x?.style.display==='none') 
     {x.style.display='block';}
 else {x.style.display='none'}
+  if (HomeButton?.style.display==='none') 
+    {HomeButton.style.display='block';}
+else {HomeButton.style.display='none'}
   }
 }

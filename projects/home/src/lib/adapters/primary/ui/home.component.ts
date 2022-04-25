@@ -1,7 +1,32 @@
-import { Component, ViewEncapsulation, ChangeDetectionStrategy, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
+import { Component, ViewEncapsulation, ChangeDetectionStrategy, OnInit, Inject } from '@angular/core';
+import { ADDS_LIST_DTO, AddsListDtoPort } from '../../../application/ports/secondary/adds-list.dto-port';
+import { ListDTO } from '../../../application/ports/secondary/list.dto';
+import { Observable } from 'rxjs';
+import { GETS_ALL_LIST_DTO, GetsAllListDtoPort } from '../../../application/ports/secondary/gets-all-list.dto-port';
+
 var test = 1;
 @Component({ selector: 'lib-home', templateUrl: './home.component.html', encapsulation: ViewEncapsulation.None, changeDetection: ChangeDetectionStrategy.OnPush })
 export class HomeComponent implements OnInit{
+  readonly homeForm: FormGroup = new FormGroup
+  ({
+      name: new FormControl()
+    });
+  list$: Observable<ListDTO[]> = this._getsAllListDto.getAll();
+
+    firstTask() {
+        var box = document.getElementById("box")!;  
+        var homeTask = document.getElementById("homeTask")!;
+        homeTask.style.display="block"
+        box.style.display='none'
+    }
+    TodoListHref() {
+      window.location.href="/todo-list"
+    }
+    HomeHref() {
+      window.location.href="/home"
+    }
+    
     ngOnInit() {
         today()
         function today() {
@@ -20,5 +45,26 @@ export class HomeComponent implements OnInit{
                 x.innerHTML=(weekNames[day-1])?.substring(0,3)+" "+today.getDate()+" "+((monthNames[today.getMonth()])?.substring(0,3)).toUpperCase();
             }
     }
-    }}
+    }
+
+  constructor(@Inject(ADDS_LIST_DTO) private _addsListDto: AddsListDtoPort, @Inject(GETS_ALL_LIST_DTO) private _getsAllListDto: GetsAllListDtoPort) {
+  }
+
+  onHomeAddTaskHomesubmited(homeForm: FormGroup): void {
+
+    if (homeForm.get("name")?.value==null) {
+      alert("NULLLLL")
+    }
+    else {
+    this._addsListDto.add({
+        name: homeForm.get('name')?.value,
+        class: "unchecked",
+        attribute: "",
+        order: 0,
+        });
+        this.homeForm.reset();
+        setTimeout(() => {  window.location.href="/todo-list" }, 400);
+  }}
+  
+}
 

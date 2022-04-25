@@ -1,12 +1,21 @@
-
-<div *ngFor="let item of list$ | async">
-    <input type="radio" id="gender_Male" value="Male">{{ item.name | json}}
+<div class="pasek"><div class="name-of-app">AWESOME TODO APP</div></div>
+<div class="date row">
+    <div class="today col-sm-1">TODAY</div>
+    <div id="current-date" class="col-sm-2 current-date fs-4"></div>
 </div>
-<div id="newTask" style="display: none;">
-    <form [formGroup]="addTask" (ngSubmit)="onAddTaskSubmited(addTask)">
-        <input type="text" formControlName="name" placeholder="Name">
-        <button type="submit" (click)="orderUp()">Submit</button>
-    </form>
+<div class="conatiner">
+    <div class="listshow">
+        <div *ngFor="let item of list$ | async">
+            <input type="radio" class="task">{{ item.name | json}}
+        </div>
+    </div>
+    <div id="newTask" style="display: none;">
+        <form [formGroup]="addTask" (ngSubmit)="onAddTaskSubmited(addTask)">
+            <textarea id="TextFromTextarea" class="textarea" type="text" formControlName="name" placeholder="Write your message here"></textarea><br>
+            <button tyle="submit" class="myButton ButtonMargin" (click)="orderUp()">Add Task</button>
+        </form>
+    </div>
+    
+    <button id="HomeButton" class="myButton" (click)="show()">Add Task</button>
+    
 </div>
- 
-<button class="myButton add-task-button" (click)="show()">Add task</button>
