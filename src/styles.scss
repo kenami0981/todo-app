@@ -1,4 +1,4 @@
-
+@import "~bootstrap/scss/bootstrap";
 * {
     font-family:monospace;
     margin: 0%;
@@ -132,7 +132,6 @@
 }
 .listshow {
     margin-left: 130px;
-    border-bottom:1px solid #888585;
 
     padding-bottom: 40px;
     padding-top: 40px;
@@ -160,4 +159,16 @@ input[type='checkbox']:checked {
 
 input[type='checkbox']:checked+label {
     text-decoration: line-through;
+}
+.dropdown-toggle::after {
+    content: none;
+}
+.btn {
+    float:right;
+}
+.border {
+    border-bottom:1px solid #888585;
+}
+#float-left {
+    float: left;
 }
