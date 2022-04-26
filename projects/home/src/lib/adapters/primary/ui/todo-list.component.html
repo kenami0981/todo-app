@@ -6,7 +6,8 @@
 <div class="conatiner">
     <div class="listshow">
         <div *ngFor="let item of list$ | async">
-            <input type="radio" class="task">{{ item.name | json}}
+            <input type="checkbox" class="task checkbox form-check-input"> =>
+            <label class="form-check-label">{{ item.name }}</label>
         </div>
     </div>
     <div id="newTask" style="display: none;">
@@ -14,8 +15,8 @@
             <textarea id="TextFromTextarea" class="textarea" type="text" formControlName="name" placeholder="Write your message here"></textarea><br>
             <button tyle="submit" class="myButton ButtonMargin" (click)="orderUp()">Add Task</button>
         </form>
-    </div>
+    </div></div>
     
     <button id="HomeButton" class="myButton" (click)="show()">Add Task</button>
     
-</div>
+
