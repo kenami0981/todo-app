@@ -5,6 +5,9 @@ import { GETS_ALL_LIST_DTO, GetsAllListDtoPort } from '../../../application/port
 import { FormGroup, FormControl } from '@angular/forms';
 import { ADDS_LIST_DTO, AddsListDtoPort } from '../../../application/ports/secondary/adds-list.dto-port';
 import { map } from 'rxjs/operators';
+import { REMOVES_LIST_DTO, RemovesListDtoPort } from '../../../application/ports/secondary/removes-list.dto-port';
+
+
 @Component({ selector: 'lib-todo-list', templateUrl: './todo-list.component.html', encapsulation: ViewEncapsulation.None, changeDetection: ChangeDetectionStrategy.OnPush })
 
 export class TodoListComponent {
@@ -37,7 +40,7 @@ export class TodoListComponent {
     name: new FormControl()
   });
   order = 1;
-  constructor(@Inject(GETS_ALL_LIST_DTO) private _getsAllListDto: GetsAllListDtoPort, @Inject(ADDS_LIST_DTO) private _addsListDto: AddsListDtoPort) {
+  constructor(@Inject(GETS_ALL_LIST_DTO) private _getsAllListDto: GetsAllListDtoPort, @Inject(ADDS_LIST_DTO) private _addsListDto: AddsListDtoPort, @Inject(REMOVES_LIST_DTO) private _removesListDto: RemovesListDtoPort) {
   }
 
 
@@ -67,5 +70,9 @@ else {x.style.display='none'}
   if (HomeButton?.style.display==='none') 
     {HomeButton.style.display='block';}
 else {HomeButton.style.display='none'}
+  }
+
+  onDeleteTaskClicked(id: any): void {
+    this._removesListDto.remove(id);
   }
 }
