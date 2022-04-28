@@ -1,4 +1,4 @@
-<div class="pasek"><div class="name-of-app">AWESOME TODO APP</div></div>
+<div class="pasek"><a style="text-decoration:none" href="/home"><div class="name-of-app mt-2">AWESOME TODO APP</div></a></div>
 <div class="date row">
     <div class="today col-sm-1">TODAY</div>
     <div id="current-date" class="col-sm-2 current-date fs-4"></div>
@@ -6,9 +6,9 @@
 <div class="conatiner">
     <div class="border">
         <div class="listshow" *ngFor="let item of list$ | async">
-            <div class="justify-content-between align-items-center py-3 pe-5 float-left">
-                <input type="checkbox" class="task checkbox form-check-input rounded-circle border-dark border-2 fs-4">.
-                <label class="form-check-label fs-4"> => {{ item.name }}</label>
+            <div class="justify-content-between align-items-center py-3 pe-5 float-left" (click)="onCheckedClicked(item.id, item.class)">
+                <input [class]="item.class" type="checkbox" class="task checkbox form-check-input rounded-circle border-dark border-2 fs-4">.
+                <label class="form-check-label fs-4" [class]="item.class"> => {{ item.name }}</label>
             </div>
             <div class="dropdown mt-3">
                 <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">...
@@ -23,7 +23,7 @@
     <div id="newTask"class="float-start" style="display: none;">
         <form [formGroup]="addTask" (ngSubmit)="onAddTaskSubmited(addTask)">
             <textarea id="TextFromTextarea" class="textarea" type="text" formControlName="name" placeholder="Write your message here"></textarea><br>
-            <button tyle="submit" class="myButton ButtonMargin" (click)="orderUp()">Add Task</button>
+            <button tyle="submit" class="myButton ButtonMargin" (click)="show()">Add Task</button>
         </form>
     </div>
     

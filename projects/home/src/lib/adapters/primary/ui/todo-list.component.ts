@@ -6,7 +6,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { ADDS_LIST_DTO, AddsListDtoPort } from '../../../application/ports/secondary/adds-list.dto-port';
 import { map } from 'rxjs/operators';
 import { REMOVES_LIST_DTO, RemovesListDtoPort } from '../../../application/ports/secondary/removes-list.dto-port';
-
+import { SETS_LIST_DTO, SetsListDtoPort } from '../../../application/ports/secondary/sets-list.dto-port';
 
 @Component({ selector: 'lib-todo-list', templateUrl: './todo-list.component.html', encapsulation: ViewEncapsulation.None, changeDetection: ChangeDetectionStrategy.OnPush })
 
@@ -28,6 +28,7 @@ export class TodoListComponent {
             }
             x.innerHTML=(weekNames[day-1])?.substring(0,3)+" "+today.getDate()+" "+((monthNames[today.getMonth()])?.substring(0,3)).toUpperCase();
         }
+      
 }
 }
   
@@ -40,7 +41,7 @@ export class TodoListComponent {
     name: new FormControl()
   });
   order = 1;
-  constructor(@Inject(GETS_ALL_LIST_DTO) private _getsAllListDto: GetsAllListDtoPort, @Inject(ADDS_LIST_DTO) private _addsListDto: AddsListDtoPort, @Inject(REMOVES_LIST_DTO) private _removesListDto: RemovesListDtoPort) {
+  constructor(@Inject(GETS_ALL_LIST_DTO) private _getsAllListDto: GetsAllListDtoPort, @Inject(ADDS_LIST_DTO) private _addsListDto: AddsListDtoPort, @Inject(REMOVES_LIST_DTO) private _removesListDto: RemovesListDtoPort, @Inject(SETS_LIST_DTO) private _setsListDto: SetsListDtoPort) {
   }
 
 
@@ -52,14 +53,9 @@ export class TodoListComponent {
       name: addTask.get('name')?.value,
       class: "unchecked",
       attribute: "",
-      order: this.order,
+      order: Date.now(),
     });
     this.addTask.reset();
-  }
-  orderUp() {
-    this.order = this.order + 1;
-    console.log(this.order);
-    this.show()
   }
   show() {
     var x = document.getElementById("newTask")!;
@@ -74,5 +70,26 @@ else {HomeButton.style.display='none'}
 
   onDeleteTaskClicked(id: any): void {
     this._removesListDto.remove(id);
+    
+  }
+  addAttribute(id: any) {
+    alert(id)
+
+  }
+
+  onCheckedClicked(ItemId: any,ItemClass: any): void {
+    if (ItemClass=="unchecked") {
+      this._setsListDto.set({
+        id: ItemId,
+        class: "checked"
+      })}
+    else { 
+      this._setsListDto.set({
+        id: ItemId,
+        class: "unchecked"
+    })
+
+    }
+  
   }
 }

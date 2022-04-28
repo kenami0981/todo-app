@@ -53,7 +53,7 @@ export class HomeComponent implements OnInit{
   onHomeAddTaskHomesubmited(homeForm: FormGroup): void {
 
     if (homeForm.get("name")?.value==null) {
-      alert("NULLLLL")
+      
     }
     else {
     this._addsListDto.add({

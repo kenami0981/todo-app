@@ -7,9 +7,10 @@ import { ListDTO } from '../../../application/ports/secondary/list.dto';
 import { filterByCriterion } from '@lowgular/shared';
 import { AddsListDtoPort } from '../../../application/ports/secondary/adds-list.dto-port';
 import { RemovesListDtoPort } from '../../../application/ports/secondary/removes-list.dto-port';
+import { SetsListDtoPort } from '../../../application/ports/secondary/sets-list.dto-port';
 
 @Injectable()
-export class FirebaseTodoAppService implements GetsAllListDtoPort, AddsListDtoPort, RemovesListDtoPort {
+export class FirebaseTodoAppService implements GetsAllListDtoPort, AddsListDtoPort, RemovesListDtoPort, SetsListDtoPort {
   constructor(private _client: AngularFirestore) {
   }
 
@@ -23,5 +24,9 @@ export class FirebaseTodoAppService implements GetsAllListDtoPort, AddsListDtoPo
 
   remove(id: string): void {
     this._client.doc('todo-list/'+id).delete();
+  }
+
+  set(list: Partial<ListDTO>): void {
+    this._client.doc('todo-list/'+list.id).update(list);
   }
 }
