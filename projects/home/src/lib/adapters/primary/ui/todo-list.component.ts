@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, ChangeDetectionStrategy, Inject } from '@angular/core';
+import { Component, ViewEncapsulation, ChangeDetectionStrategy, Inject, TemplateRef } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ListDTO } from '../../../application/ports/secondary/list.dto';
 import { GETS_ALL_LIST_DTO, GetsAllListDtoPort } from '../../../application/ports/secondary/gets-all-list.dto-port';
@@ -7,6 +7,10 @@ import { ADDS_LIST_DTO, AddsListDtoPort } from '../../../application/ports/secon
 import { map } from 'rxjs/operators';
 import { REMOVES_LIST_DTO, RemovesListDtoPort } from '../../../application/ports/secondary/removes-list.dto-port';
 import { SETS_LIST_DTO, SetsListDtoPort } from '../../../application/ports/secondary/sets-list.dto-port';
+import { BsModalService, BsModalRef } from "ngx-bootstrap/modal";
+export class DemoModalServiceStaticComponent {
+  
+}
 
 @Component({ selector: 'lib-todo-list', templateUrl: './todo-list.component.html', encapsulation: ViewEncapsulation.None, changeDetection: ChangeDetectionStrategy.OnPush })
 
@@ -41,7 +45,7 @@ export class TodoListComponent {
     name: new FormControl()
   });
   order = 1;
-  constructor(@Inject(GETS_ALL_LIST_DTO) private _getsAllListDto: GetsAllListDtoPort, @Inject(ADDS_LIST_DTO) private _addsListDto: AddsListDtoPort, @Inject(REMOVES_LIST_DTO) private _removesListDto: RemovesListDtoPort, @Inject(SETS_LIST_DTO) private _setsListDto: SetsListDtoPort) {
+  constructor(private modalService: BsModalService,@Inject(GETS_ALL_LIST_DTO) private _getsAllListDto: GetsAllListDtoPort, @Inject(ADDS_LIST_DTO) private _addsListDto: AddsListDtoPort, @Inject(REMOVES_LIST_DTO) private _removesListDto: RemovesListDtoPort, @Inject(SETS_LIST_DTO) private _setsListDto: SetsListDtoPort) {
   }
 
 
@@ -67,7 +71,6 @@ else {x.style.display='none'}
     {HomeButton.style.display='block';}
 else {HomeButton.style.display='none'}
   }
-
   onDeleteTaskClicked(id: any): void {
     this._removesListDto.remove(id);
     
@@ -91,5 +94,31 @@ else {HomeButton.style.display='none'}
 
     }
   
+  }
+  onEditTask(ItemId: any,ItemName: any, ItemOrder: any): void {
+    // document.getElementById(ItemId)!.innerHTML = "<textarea></textarea>";
+    // document.getElementById(ItemOrder)!.innerHTML='<button>Submit</button>'
+    // document.getElementById(ItemOrder)!.addEventListener('click', this.Submited);
+    
+    var NewTask = prompt("Edited task:")!;
+    this._setsListDto.set({
+      id: ItemId,
+      name: NewTask
+    
+    })
+  }
+  modalRef?: BsModalRef;
+  message?: string;
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template, { class: "modal-md" });
+  }
+
+  confirm(): void {
+    this.modalRef?.hide();
+  }
+
+  decline(): void {
+    this.modalRef?.hide();
   }
 }

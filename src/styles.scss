@@ -174,3 +174,8 @@ input.checked {
 .checked {
     text-decoration: line-through;
 }
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";
+
+/* Importing Datepicker SCSS file. */
+@import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";
