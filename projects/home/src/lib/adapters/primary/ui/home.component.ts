@@ -4,6 +4,7 @@ import { ADDS_LIST_DTO, AddsListDtoPort } from '../../../application/ports/secon
 import { ListDTO } from '../../../application/ports/secondary/list.dto';
 import { Observable } from 'rxjs';
 import { GETS_ALL_LIST_DTO, GetsAllListDtoPort } from '../../../application/ports/secondary/gets-all-list.dto-port';
+import { Router, RouterLink } from '@angular/router';
 
 var test = 1;
 @Component({ selector: 'lib-home', templateUrl: './home.component.html', encapsulation: ViewEncapsulation.None, changeDetection: ChangeDetectionStrategy.OnPush })
@@ -29,6 +30,7 @@ export class HomeComponent implements OnInit{
     
     ngOnInit() {
         today()
+        eventListener()
         function today() {
             var today = new Date()
             const x = document.getElementById("current-date");
@@ -45,9 +47,17 @@ export class HomeComponent implements OnInit{
                 x.innerHTML=(weekNames[day-1])?.substring(0,3)+" "+today.getDate()+" "+((monthNames[today.getMonth()])?.substring(0,3)).toUpperCase();
             }
     }
+    function enableButton(){
+      var myButtonIWantToEnable = document.getElementById("change")!;
+      myButtonIWantToEnable.innerHTML = '<button type="submit" id="HomeButton" class="myButton">Add Task</button>'
+    }
+    function eventListener() {
+      var el = document.getElementById("TextFromTextarea")!;
+     el.addEventListener("click", enableButton, false);
+    }
     }
 
-  constructor(@Inject(ADDS_LIST_DTO) private _addsListDto: AddsListDtoPort, @Inject(GETS_ALL_LIST_DTO) private _getsAllListDto: GetsAllListDtoPort) {
+  constructor(@Inject(ADDS_LIST_DTO) private _addsListDto: AddsListDtoPort, @Inject(GETS_ALL_LIST_DTO) private _getsAllListDto: GetsAllListDtoPort, private _router: Router) {
   }
 
   onHomeAddTaskHomesubmited(homeForm: FormGroup): void {
@@ -63,7 +73,8 @@ export class HomeComponent implements OnInit{
         order: 0,
         });
         this.homeForm.reset();
-        setTimeout(() => {  window.location.href="/todo-list" }, 400);
+        this._router.navigate(['/todo-list']);
+        
   }}
   
 }

@@ -8,6 +8,7 @@ import { map } from 'rxjs/operators';
 import { REMOVES_LIST_DTO, RemovesListDtoPort } from '../../../application/ports/secondary/removes-list.dto-port';
 import { SETS_LIST_DTO, SetsListDtoPort } from '../../../application/ports/secondary/sets-list.dto-port';
 import { BsModalService, BsModalRef } from "ngx-bootstrap/modal";
+import { global } from '@angular/compiler/src/util';
 export class DemoModalServiceStaticComponent {
   
 }
@@ -62,7 +63,7 @@ export class TodoListComponent {
     this.addTask.reset();
   }
   show() {
-    var x = document.getElementById("newTask")!;
+    var x = document.getElementById("input")!;
     var HomeButton = document.getElementById("HomeButton")!;
     if (x?.style.display==='none') 
     {x.style.display='block';}
@@ -95,18 +96,36 @@ else {HomeButton.style.display='none'}
     }
   
   }
-  onEditTask(ItemId: any,ItemName: any, ItemOrder: any): void {
+  onEditTask(ItemId: any,ItemName: any, ItemOrder: any,ItemClass:any): void {
     // document.getElementById(ItemId)!.innerHTML = "<textarea></textarea>";
     // document.getElementById(ItemOrder)!.innerHTML='<button>Submit</button>'
     // document.getElementById(ItemOrder)!.addEventListener('click', this.Submited);
     
-    var NewTask = prompt("Edited task:")!;
-    this._setsListDto.set({
-      id: ItemId,
-      name: NewTask
+    // var input = prompt("Edited task:")!;
+    var place = document.getElementById(ItemId)!;
+    // document.getElementById('+ItemOrder+').value
+    place.innerHTML='<input id='+ItemOrder+' value="'+ItemName+'"></input><button id="'+ItemName+'">Update</button>'
+    var button = document.getElementById(ItemName)!;
+    button.onclick=() => {
+      var input = (<HTMLInputElement>document.getElementById(ItemOrder)).value
+      var updated = (<HTMLInputElement>document.getElementById(ItemOrder)).value
+      place.innerHTML='<label class="form-check-label fs-4" class='+ItemClass+' id='+ItemId+'>=> '+input
+
+      this._setsListDto.set({
+        id: ItemId,
+        name: updated
+      }
+      
+      )
+    }
+      
     
-    })
+      
+    
+  
+    
   }
+
   modalRef?: BsModalRef;
   message?: string;
 
@@ -120,5 +139,7 @@ else {HomeButton.style.display='none'}
 
   decline(): void {
     this.modalRef?.hide();
+    
   }
 }
+

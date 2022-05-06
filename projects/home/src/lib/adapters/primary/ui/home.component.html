@@ -1,5 +1,5 @@
 
-<div class="pasek"><div class="name-of-app">AWESOME TODO APP</div></div>
+<div class="pasek w-100 h-25"><div class="name-of-app">AWESOME TODO APP</div></div>
 <div class="date row">
     <div class="today col-sm-1">TODAY</div>
     <div id="current-date" class="col-sm-2 current-date fs-4"></div>
@@ -13,7 +13,8 @@
     <div class="box" id="homeTask" style="display: none">
         <form [formGroup]="homeForm" (ngSubmit)="onHomeAddTaskHomesubmited(homeForm)">
             <textarea id="TextFromTextarea" class="textarea" type="text" formControlName="name" placeholder="Write your message here"></textarea><br>
-            <button type="submit" id="HomeButton" class="myButton">Add Task</button>
+            <em id="change">
+            <button type="submit" id="HomeButton" class="myButton" disabled>Add Task</button></em>
             <button id="CancelButton" (click)="HomeHref()">Cancel</button>
             <button id="CancelButton" (click)="TodoListHref()">Task list</button>
             
@@ -28,8 +29,3 @@
 </div>
     <div class="co">
     <img class="img" src="https://assets.entrepreneur.com/content/3x2/2000/1643009401-kelly-sikkema-LM17xCofKA0-unsplash.jpg?auto=webp&quality=95&crop=16:9&width=675"></div></div></div>
-    <!-- <div>
-        <input type="radio" checked id="gender_Male" value="Male" />
-    </div>
-    <div>
-<input type="radio" id="gender_Female" value="Female" /></div> -->

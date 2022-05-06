@@ -1,4 +1,9 @@
 @import "~bootstrap/scss/bootstrap";
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";
+
+/* Importing Datepicker SCSS file. */
+@import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";
 * {
     font-family:monospace;
     margin: 0%;
@@ -6,6 +11,7 @@
 .pasek {
     background-color: #6A37ec;
     height: 60px;
+    width: 100%;
     display: flex;
 
 
@@ -28,7 +34,7 @@
     display: flex;
     align-items: center;
     justify-content: start;
-    margin-left: 130px;
+
     border-bottom:1px solid #888585;
 
 }
@@ -37,6 +43,7 @@
     font-size: 3.5em;
     margin-right: 50px;
     float:left;
+    margin-left: 150px;
 }
 .current-date {
     
@@ -174,8 +181,15 @@ input.checked {
 .checked {
     text-decoration: line-through;
 }
-/* Importing Bootstrap SCSS file. */
-@import "~bootstrap/scss/bootstrap";
 
-/* Importing Datepicker SCSS file. */
-@import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";
+button:disabled,
+button[disabled]{
+    background:linear-gradient(to bottom, #717072 5%, #717072 100%);
+	background-color:#8f7eb854;
+}
+button:disabled:hover,
+button[disabled]:hover{
+    background:linear-gradient(to bottom, #717072 5%, #717072 100%);
+	background-color:#8f7eb854;
+    cursor:default;
+}
