@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
 import { REMOVES_LIST_DTO, RemovesListDtoPort } from '../../../application/ports/secondary/removes-list.dto-port';
 import { SETS_LIST_DTO, SetsListDtoPort } from '../../../application/ports/secondary/sets-list.dto-port';
 import { BsModalService, BsModalRef } from "ngx-bootstrap/modal";
-import { global } from '@angular/compiler/src/util';
+import { Router } from '@angular/router';
 export class DemoModalServiceStaticComponent {
   
 }
@@ -46,10 +46,18 @@ export class TodoListComponent {
     name: new FormControl()
   });
   order = 1;
-  constructor(private modalService: BsModalService,@Inject(GETS_ALL_LIST_DTO) private _getsAllListDto: GetsAllListDtoPort, @Inject(ADDS_LIST_DTO) private _addsListDto: AddsListDtoPort, @Inject(REMOVES_LIST_DTO) private _removesListDto: RemovesListDtoPort, @Inject(SETS_LIST_DTO) private _setsListDto: SetsListDtoPort) {
+  constructor(private modalService: BsModalService,@Inject(GETS_ALL_LIST_DTO) private _getsAllListDto: GetsAllListDtoPort, @Inject(ADDS_LIST_DTO) private _addsListDto: AddsListDtoPort, @Inject(REMOVES_LIST_DTO) private _removesListDto: RemovesListDtoPort, @Inject(SETS_LIST_DTO) private _setsListDto: SetsListDtoPort, private _router: Router) {
   }
 
-
+  HomeHref() {
+    var url =this._router.url;
+      if (url.length>13) {  
+        this._router.navigate(['todo-app/home']);
+      
+      }
+      else {
+        this._router.navigate(['/home']);
+      }}
   onAddTaskSubmited(addTask: FormGroup): void {
     
     
@@ -75,10 +83,6 @@ else {HomeButton.style.display='none'}
   onDeleteTaskClicked(id: any): void {
     this._removesListDto.remove(id);
     
-  }
-  addAttribute(id: any) {
-    alert(id)
-
   }
 
   onCheckedClicked(ItemId: any,ItemClass: any): void {

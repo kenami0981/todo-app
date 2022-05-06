@@ -1,4 +1,4 @@
-<div class="pasek"><a style="text-decoration:none" href="/home"><div class="name-of-app mt-2">AWESOME TODO APP</div></a></div>
+<div class="pasek"><a style="text-decoration:none" (click)="HomeHref()"><div class="name-of-app mt-2">AWESOME TODO APP</div></a></div>
 <div class="date row">
     <div class="today col-sm-1">TODAY</div>
     <div id="current-date" class="col-sm-2 current-date fs-4"></div>
@@ -11,7 +11,7 @@
                 <label class="form-check-label fs-4" [class]="item.class" [id]="item.id"> => {{ item.name }}</label>
             </div>
             <div class="dropdown mt-3">
-                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">...
+                <a class="btn btn-secondary dropdown-toggle"  role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">...
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <li><button class="dropdown-item" (click)="onEditTask(item.id, item.name, item.order,item.class)">Edit</button></li>

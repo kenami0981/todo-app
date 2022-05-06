@@ -22,10 +22,17 @@ export class HomeComponent implements OnInit{
         box.style.display='none'
     }
     TodoListHref() {
-      window.location.href="/todo-list"
+      var url =this._router.url;
+        if (url.length>13) {  
+          this._router.navigate(['todo-app/todo-list']);
+        
+        }
+        else {
+          this._router.navigate(['/todo-list']);
+        }
     }
     HomeHref() {
-      window.location.href="/home"
+      window.location.reload();
     }
     
     ngOnInit() {
@@ -73,14 +80,14 @@ export class HomeComponent implements OnInit{
         order: 0,
         });
         this.homeForm.reset();
-        var url = this._router.url[0];
-        alert(url)
-        if (url=='/home') {
-          url=''
+        var url =this._router.url;
+        if (url.length>13) {  
+          this._router.navigate(['todo-app/todo-list']);
+        
         }
-        
-        this._router.navigate([url+'/todo-list']);
-        
+        else {
+          this._router.navigate(['/todo-list']);
+        }
   }}
   
 }
