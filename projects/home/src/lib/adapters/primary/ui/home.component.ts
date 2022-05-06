@@ -4,7 +4,7 @@ import { ADDS_LIST_DTO, AddsListDtoPort } from '../../../application/ports/secon
 import { ListDTO } from '../../../application/ports/secondary/list.dto';
 import { Observable } from 'rxjs';
 import { GETS_ALL_LIST_DTO, GetsAllListDtoPort } from '../../../application/ports/secondary/gets-all-list.dto-port';
-import { Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
 var test = 1;
 @Component({ selector: 'lib-home', templateUrl: './home.component.html', encapsulation: ViewEncapsulation.None, changeDetection: ChangeDetectionStrategy.OnPush })
@@ -57,7 +57,7 @@ export class HomeComponent implements OnInit{
     }
     }
 
-  constructor(@Inject(ADDS_LIST_DTO) private _addsListDto: AddsListDtoPort, @Inject(GETS_ALL_LIST_DTO) private _getsAllListDto: GetsAllListDtoPort, private _router: Router) {
+  constructor(@Inject(ADDS_LIST_DTO) private _addsListDto: AddsListDtoPort, @Inject(GETS_ALL_LIST_DTO) private _getsAllListDto: GetsAllListDtoPort, private _router: Router, private route: ActivatedRoute) {
   }
 
   onHomeAddTaskHomesubmited(homeForm: FormGroup): void {
@@ -73,7 +73,13 @@ export class HomeComponent implements OnInit{
         order: 0,
         });
         this.homeForm.reset();
-        this._router.navigate(['/todo-list']);
+        var url = this._router.url[0];
+        alert(url)
+        if (url=='/home') {
+          url=''
+        }
+        
+        this._router.navigate([url+'/todo-list']);
         
   }}
   

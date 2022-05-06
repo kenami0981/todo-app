@@ -34,8 +34,8 @@
                 </div>
             </ng-template>
          </div>
-    </div>
-    <div id="newTask"class="float-start" style="display: none;">
+    </div><br>
+    <div id="input"class="float-start" style="display: none;">
         <form [formGroup]="addTask" (ngSubmit)="onAddTaskSubmited(addTask)">
             <textarea id="TextFromTextarea" class="textarea" type="text" formControlName="name" placeholder="Write your message here"></textarea><br>
             <button type="submit" class="myButton ButtonMargin" (click)="show()">Add Task</button>
