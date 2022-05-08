@@ -24,15 +24,14 @@ export class HomeComponent implements OnInit{
     TodoListHref() {
       var url =this._router.url;
         if (url[3]=='m') {  
-          // this._router.navigate(['todo-app/todo-list']);
+          
           
           window.location.href = '/todo-list'
           
         
         }
         else {
-          // this._router.navigate(['/todo-list']);
-          window.location.href = 'todo-app/todo-list'
+          this._router.navigate(['todo-app/todo-list']);
         }
       
     }
@@ -95,7 +94,7 @@ export class HomeComponent implements OnInit{
         }
         else {
           // this._router.navigate(['/todo-list']);
-          window.location.href = 'todo-app/todo-list'
+          this._router.navigate(['todo-app/todo-list']);
         }
   }}
   

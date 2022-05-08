@@ -68,7 +68,7 @@ export class TodoListComponent {
         }
         else {
           // this._router.navigate(['/todo-list']);
-          window.location.href = 'todo-app/home'
+          this._router.navigate(['todo-app/home']);
         }
       }
   onAddTaskSubmited(addTask: FormGroup): void {
