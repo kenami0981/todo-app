@@ -50,14 +50,27 @@ export class TodoListComponent {
   }
 
   HomeHref() {
+    // var url =this._router.url;
+    //   if (url.length>13) {  
+    //     this._router.navigate(['todo-app/home']);
+    //     this.ngOnInit()
+    //   }
+    //   else {
+    //     this._router.navigate(['/home']);
+    //   }}
     var url =this._router.url;
-      if (url.length>13) {  
-        this._router.navigate(['todo-app/home']);
-      
+        if (url[6]=='l') {  
+          // this._router.navigate(['todo-app/todo-list']);
+          
+          window.location.href = '/home'
+          
+        
+        }
+        else {
+          // this._router.navigate(['/todo-list']);
+          window.location.href = 'todo-app/home'
+        }
       }
-      else {
-        this._router.navigate(['/home']);
-      }}
   onAddTaskSubmited(addTask: FormGroup): void {
     
     

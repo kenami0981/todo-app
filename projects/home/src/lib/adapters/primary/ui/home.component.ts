@@ -23,13 +23,18 @@ export class HomeComponent implements OnInit{
     }
     TodoListHref() {
       var url =this._router.url;
-        if (url.length>13) {  
-          this._router.navigate(['todo-app/todo-list']);
+        if (url[3]=='m') {  
+          // this._router.navigate(['todo-app/todo-list']);
+          
+          window.location.href = '/todo-list'
+          
         
         }
         else {
-          this._router.navigate(['/todo-list']);
+          // this._router.navigate(['/todo-list']);
+          window.location.href = 'todo-app/todo-list'
         }
+      
     }
     HomeHref() {
       window.location.reload();
@@ -81,12 +86,16 @@ export class HomeComponent implements OnInit{
         });
         this.homeForm.reset();
         var url =this._router.url;
-        if (url.length>13) {  
-          this._router.navigate(['todo-app/todo-list']);
+        if (url[3]=='m') {  
+          // this._router.navigate(['todo-app/todo-list']);
+          
+          window.location.href = '/todo-list'
+          
         
         }
         else {
-          this._router.navigate(['/todo-list']);
+          // this._router.navigate(['/todo-list']);
+          window.location.href = 'todo-app/todo-list'
         }
   }}
   

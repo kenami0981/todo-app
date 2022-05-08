@@ -10,7 +10,8 @@
 }
 .pasek {
     background-color: #6A37ec;
-    height: 60px;
+    min-height: 60px;
+    max-height: fit-content;
     width: 100%;
     display: flex;
 
@@ -20,38 +21,20 @@
 .name-of-app {
     color: white;
     font-weight: bold;
-    margin-left: 150px;
     font-size: 2em;
-    flex-direction: column;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
 }
 .date {
-    margin-top: 30px;
-    flex-direction: row;
-    display: flex;
-    align-items: center;
-    justify-content: start;
-
     border-bottom:1px solid #888585;
 
 }
 .today {
     font-weight: bold;
     font-size: 3.5em;
-    margin-right: 50px;
-    float:left;
-    margin-left: 150px;
-}
-.current-date {
-    
-    margin-top:10px;
 }
 .box {
    
-    height: 35rem;
+    min-height: 30rem;
+    max-height: fit-content;
     flex-direction: column;
     display: flex;
     align-items: center;
@@ -90,32 +73,20 @@
 	position:relative;
 	top:1px;
 }
-.rowimg {
-    flex-direction: row;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.chills {
+    text-align: center;
 }
-.img {
-    padding: 10%;
-    width: 480px;
-    height: 320px;
-
+.chills img {
+    width: 100%;
+    height: 260px;
 }
 .textarea {
-    margin-left: 130px;
-    width: 530px;
-    height: 110px;
-    margin-top: 40px;
-    margin-bottom: 40px;
+    min-width: fit-content;
+    min-height: 100px;
     padding: 10px;
     font-size: 1.2em;
     border-radius: 8px;
 
-}
-#HomeButton {
-    margin-left: 130px;
-    margin-right: 20px;
 }
 #CancelButton {
     box-shadow: 2px -3px 0px 1px gray;
@@ -128,24 +99,24 @@
 	cursor:pointer;
 	color: gray;
 	font-size:20px;
-	padding:10px 23px;
+	// padding:10px 23px;
 	text-decoration:none;
     border: 2px solid gray;
-    margin-right: 20px;
+    // margin-right: 20px;
 }
 #CancelButton:hover {
 	background-color:white;
     color: rgba(128, 128, 128, 0.74);
 }
 .listshow {
-    margin-left: 130px;
+    // margin-left: 130px;
 
     padding-bottom: 40px;
     padding-top: 40px;
 }
-.ButtonMargin {
-    margin-left: 130px;
-}
+// .ButtonMargin {
+    // margin-left: 130px;
+// }
 .task {
     margin-bottom: 20px ;
 }
@@ -173,7 +144,7 @@ input.checked {
     float:right;
 }
 .border {
-    border-bottom:1px solid #888585;
+    border-top:1px solid #888585;
 }
 #float-left {
     float: left;
