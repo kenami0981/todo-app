@@ -1,7 +1,7 @@
 
 <div class='row'>
     <div class="pasek col-md-12">
-        <a class='offset-md-1'style="text-decoration:none; cursor: pointer;" (click)="HomeHref()">
+        <a class='offset-md-1'style="text-decoration:none; cursor: pointer;">
            <div class="name-of-app mt-2 ml-1">AWESOME TODO APP</div>
         </a>
     </div>
@@ -22,7 +22,7 @@
         <form [formGroup]="homeForm" (ngSubmit)="onHomeAddTaskHomesubmited(homeForm)">
             <textarea id="TextFromTextarea" class="textarea col-sm-8 offset-md-1 mt-3" type="text" formControlName="name" placeholder="Write your message here"></textarea><br>
             <div class="row offset-md-1 mt-2">
-            <button type="submit" id="change" class="myButton col-md-3 mr-2 mb-3 ml-3" [disabled]="homeForm.invalid" >Add Task</button>
+            <button type="submit" id="change" class="myButton col-md-3 mr-2 mb-3 ml-3" disabled="true">Add Task</button>
             <button class='col-md-3 ml-3 mb-3' id="CancelButton" (click)="HomeHref()">Cancel</button>
             <button class='col-md-3 offset-sm-2 offset-md-0 ml-3' id="CancelButton" (click)="TodoListHref()">Task list</button>
         </div>

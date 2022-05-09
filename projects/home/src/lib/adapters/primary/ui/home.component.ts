@@ -23,14 +23,8 @@ export class HomeComponent implements OnInit{
     }
     TodoListHref() {
       var url =this._router.url;
-        if (url.length>13) {  
-          this._router.navigate(['todo-app/todo-list']);
-          
+          this._router.navigate(['todo-list']);
         
-        }
-        else {
-          this._router.navigate(['/todo-list']);
-        }
     }
     HomeHref() {
       window.location.reload();
@@ -57,7 +51,8 @@ export class HomeComponent implements OnInit{
     }
     function enableButton(){
       var myButtonIWantToEnable = document.getElementById("change")!;
-      myButtonIWantToEnable.innerHTML = '<button type="submit" id="HomeButton" class="myButton">Add Task</button>'
+      myButtonIWantToEnable.removeAttribute('disabled')
+
     }
     function eventListener() {
       var el = document.getElementById("TextFromTextarea")!;
@@ -78,7 +73,7 @@ export class HomeComponent implements OnInit{
         name: homeForm.get('name')?.value,
         class: "unchecked",
         attribute: "",
-        order: 0,
+        order:Date.now(),
         });
         this.homeForm.reset();
         var url =this._router.url;
