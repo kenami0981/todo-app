@@ -23,7 +23,13 @@ export class HomeComponent implements OnInit{
     }
     TodoListHref() {
       var url =this._router.url;
-          this._router.navigate(['todo-list']);
+      if (url.length>6) {  
+        this._router.navigate(['/todo-app/todo-list']);
+      
+      }
+      else {
+        this._router.navigate(['/todo-list']);
+      }
         
     }
     HomeHref() {
@@ -32,7 +38,6 @@ export class HomeComponent implements OnInit{
     
     ngOnInit() {
         today()
-        eventListener()
         function today() {
             var today = new Date()
             const x = document.getElementById("current-date");
@@ -48,21 +53,16 @@ export class HomeComponent implements OnInit{
                 }
                 x.innerHTML=(weekNames[day-1])?.substring(0,3)+" "+today.getDate()+" "+((monthNames[today.getMonth()])?.substring(0,3)).toUpperCase();
             }
-    }
-    function enableButton(){
-      var myButtonIWantToEnable = document.getElementById("change")!;
-      myButtonIWantToEnable.removeAttribute('disabled')
-
-    }
-    function eventListener() {
-      var el = document.getElementById("TextFromTextarea")!;
-     el.addEventListener("click", enableButton, false);
-    }
+          }
     }
 
   constructor(@Inject(ADDS_LIST_DTO) private _addsListDto: AddsListDtoPort, @Inject(GETS_ALL_LIST_DTO) private _getsAllListDto: GetsAllListDtoPort, private _router: Router, private route: ActivatedRoute) {
   }
+  enableButton(){
+    var myButtonIWantToEnable = document.getElementById("change")!;
+    myButtonIWantToEnable.removeAttribute('disabled')
 
+  }
   onHomeAddTaskHomesubmited(homeForm: FormGroup): void {
 
     if (homeForm.get("name")?.value==null) {
@@ -77,8 +77,8 @@ export class HomeComponent implements OnInit{
         });
         this.homeForm.reset();
         var url =this._router.url;
-        if (url.length>13) {  
-          this._router.navigate(['todo-app/todo-list']);
+        if (url.length>6) {  
+          this._router.navigate(['/todo-app/todo-list']);
         
         }
         else {

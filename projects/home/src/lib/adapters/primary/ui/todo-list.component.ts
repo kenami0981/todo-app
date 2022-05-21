@@ -16,27 +16,6 @@ export class DemoModalServiceStaticComponent {
 @Component({ selector: 'lib-todo-list', templateUrl: './todo-list.component.html', encapsulation: ViewEncapsulation.None, changeDetection: ChangeDetectionStrategy.OnPush })
 
 export class TodoListComponent {
-  ngOnInit() {
-    today()
-    function today() {
-        var today = new Date()
-        const x = document.getElementById("current-date");
-        const monthNames = ["January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"
-        ];
-        const weekNames = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-        var day = today.getDay()
-        if (x!==null) {
-            if (day==0) {
-                day=7
-                
-            }
-            x.innerHTML=(weekNames[day-1])?.substring(0,3)+" "+today.getDate()+" "+((monthNames[today.getMonth()])?.substring(0,3)).toUpperCase();
-        }
-      
-}
-}
-  
   
   list$: Observable<ListDTO[]> = this._getsAllListDto.getAll().pipe(map((list: ListDTO[]) =>
       list.sort((a,b) => a.order - b.order))
@@ -46,17 +25,16 @@ export class TodoListComponent {
     name: new FormControl()
   });
   order = 1;
-  constructor(private modalService: BsModalService,@Inject(GETS_ALL_LIST_DTO) private _getsAllListDto: GetsAllListDtoPort, @Inject(ADDS_LIST_DTO) private _addsListDto: AddsListDtoPort, @Inject(REMOVES_LIST_DTO) private _removesListDto: RemovesListDtoPort, @Inject(SETS_LIST_DTO) private _setsListDto: SetsListDtoPort, private _router: Router) {
+  constructor(private modalService: BsModalService,@Inject(GETS_ALL_LIST_DTO) private _getsAllListDto: GetsAllListDtoPort, @Inject(ADDS_LIST_DTO) private _addsListDto: AddsListDtoPort, @Inject(REMOVES_LIST_DTO) private _removesListDto: RemovesListDtoPort, @Inject(SETS_LIST_DTO) private _setsListDto: SetsListDtoPort, private router: Router) {
   }
 
   HomeHref() {
-    var url =this._router.url;
-      if (url.length>13) {  
-        this._router.navigate(['todo-app/home']);
-        this.ngOnInit()
+    var url =this.router.url;
+      if (url.length>11) {  
+        this.router.navigate(['todo-app/home']);
       }
       else {
-        this._router.navigate(['/home']);
+        this.router.navigate(['/home']);
       }}
   onAddTaskSubmited(addTask: FormGroup): void {
     
@@ -101,14 +79,8 @@ else {HomeButton.style.display='none'}
   
   }
   onEditTask(ItemId: any,ItemName: any, ItemOrder: any,ItemClass:any): void {
-    // document.getElementById(ItemId)!.innerHTML = "<textarea></textarea>";
-    // document.getElementById(ItemOrder)!.innerHTML='<button>Submit</button>'
-    // document.getElementById(ItemOrder)!.addEventListener('click', this.Submited);
-    
-    // var input = prompt("Edited task:")!;
     var place = document.getElementById(ItemId)!;
-    // document.getElementById('+ItemOrder+').value
-    place.innerHTML='<input id='+ItemOrder+' value="'+ItemName+'"></input><button id="'+ItemName+'">Update</button>'
+    place.innerHTML='<input id='+ItemOrder+' value="'+ItemName+'"></input><button id="'+ItemName+'" class="ml-2">Update</button>'
     var button = document.getElementById(ItemName)!;
     button.onclick=() => {
       var input = (<HTMLInputElement>document.getElementById(ItemOrder)).value

@@ -1,17 +1,3 @@
-
-<div class='row'>
-    <div class="pasek col-md-12">
-        <a class='offset-md-1'style="text-decoration:none; cursor: pointer;">
-           <div class="name-of-app mt-2 ml-1">AWESOME TODO APP</div>
-        </a>
-    </div>
-</div>
-
-<div class="container">
-<div class="row">
-        <div class="today col-md-3">TODAY</div>
-        <div id="current-date" class="ml-2 col-sm-2 current-date fs-4 col-md-2 align-self-center"></div>
-</div></div>
 <div class="container">
     <div class="box" id="box">
         <div class="main mt-3">Get a clear view of the day ahead</div>
@@ -20,7 +6,7 @@
     </div>
     <div class="box row mt-3" id="homeTask" style="display: none"><br>
         <form [formGroup]="homeForm" (ngSubmit)="onHomeAddTaskHomesubmited(homeForm)">
-            <textarea id="TextFromTextarea" class="textarea col-sm-8 offset-md-1 mt-3" type="text" formControlName="name" placeholder="Write your message here"></textarea><br>
+            <textarea id="TextFromTextarea" class="textarea col-sm-8 offset-md-1 mt-3" type="text" formControlName="name" placeholder="Write your message here"(click)="enableButton()"></textarea><br>
             <div class="row offset-md-1 mt-2">
             <button type="submit" id="change" class="myButton col-md-3 mr-2 mb-3 ml-3" disabled="true">Add Task</button>
             <button class='col-md-3 ml-3 mb-3' id="CancelButton" (click)="HomeHref()">Cancel</button>
