@@ -1,0 +1,166 @@
+@import "~bootstrap/scss/bootstrap";
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";
+
+/* Importing Datepicker SCSS file. */
+@import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";
+* {
+    font-family:monospace;
+    margin: 0%;
+}
+.pasek {
+    background-color: #6A37ec;
+    min-height: 60px;
+    max-height: fit-content;
+    width: 100%;
+    display: flex;
+
+
+    
+}
+.name-of-app {
+    color: white;
+    font-weight: bold;
+    font-size: 2em;
+}
+.date {
+    border-bottom:1px solid #888585;
+
+}
+.today {
+    font-weight: bold;
+    font-size: 3.5em;
+}
+.box {
+   
+    min-height: 30rem;
+    max-height: fit-content;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+
+}
+.main {
+    font-weight: bold;
+    font-size: 3.4em;
+    margin-bottom: 20px;
+}
+.submain {
+    font-size: 1.7em;
+    margin-bottom: 60px;
+}
+.myButton {
+    width: 150px;
+    height: 45px;
+	box-shadow: 2px -3px 0px 1px #9fb4f2;
+	background:linear-gradient(to bottom, #7749ec 5%, #6837e4 100%);
+	background-color:#7749ec;
+	border-radius:6px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-size:20px;
+	padding:10px 23px;
+	text-decoration:none;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #6837e4 5%, #7749ec 100%);
+	background-color:#7749ec;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+.chills {
+    text-align: center;
+}
+.chills img {
+    width: 100%;
+    height: 260px;
+}
+.textarea {
+    min-width: fit-content;
+    min-height: 100px;
+    padding: 10px;
+    font-size: 1.2em;
+    border-radius: 8px;
+
+}
+#CancelButton {
+    box-shadow: 2px -3px 0px 1px gray;
+	background-color:rgba(255, 255, 255, 0.781);
+    border: #888585;
+    width: 150px;
+    height: 45px;
+	border-radius:6px;
+	display:inline-block;
+	cursor:pointer;
+	color: gray;
+	font-size:20px;
+	// padding:10px 23px;
+	text-decoration:none;
+    border: 2px solid gray;
+    // margin-right: 20px;
+}
+#CancelButton:hover {
+	background-color:white;
+    color: rgba(128, 128, 128, 0.74);
+}
+.listshow {
+    // margin-left: 130px;
+
+    padding-bottom: 40px;
+    padding-top: 40px;
+}
+// .ButtonMargin {
+    // margin-left: 130px;
+// }
+.task {
+    margin-bottom: 20px ;
+}
+input[type='checkbox'] {
+    border: 1px solid;
+}
+
+input[type='checkbox']:hover {
+    background-color: #DEE2E6;
+    border: 1px solid;
+    cursor: pointer;
+}
+
+input.checked {
+    background-color: #198754;
+    border-radius: 1em;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e");
+    
+}
+
+.dropdown-toggle::after {
+    content: none;
+}
+.btn {
+    float:right;
+}
+.border {
+    border-top:1px solid #888585;
+}
+#float-left {
+    float: left;
+}
+.checked {
+    text-decoration: line-through;
+}
+
+button:disabled,
+button[disabled]{
+    background:linear-gradient(to bottom, #717072 5%, #717072 100%);
+	background-color:#8f7eb854;
+}
+button:disabled:hover,
+button[disabled]:hover{
+    background:linear-gradient(to bottom, #717072 5%, #717072 100%);
+	background-color:#8f7eb854;
+    cursor:default;
+}

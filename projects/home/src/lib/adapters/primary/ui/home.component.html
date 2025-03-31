@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="box" id="box">
+        <div class="main mt-3">Get a clear view of the day ahead</div>
+        <div class="submain">All your tasks that are due today will show up here.</div>
+        <button (click)="firstTask()" class="myButton add-task-button mb-3">Add task</button>
+    </div>
+    <div class="box row mt-3" id="homeTask" style="display: none"><br>
+        <form [formGroup]="homeForm" (ngSubmit)="onHomeAddTaskHomesubmited(homeForm)">
+            <textarea id="TextFromTextarea" class="textarea col-sm-8 offset-md-1 mt-3" type="text" formControlName="name" placeholder="Write your message here"(click)="enableButton()"></textarea><br>
+            <div class="row offset-md-1 mt-2">
+            <button type="submit" id="change" class="myButton col-md-3 mr-2 mb-3 ml-3" disabled="true">Add Task</button>
+            <button class='col-md-3 ml-3 mb-3' id="CancelButton" (click)="HomeHref()">Cancel</button>
+            <button class='col-md-3 offset-sm-2 offset-md-0 ml-3' id="CancelButton" (click)="TodoListHref()">Task list</button>
+        </div>
+            
+        </form>
+    </div>
+    <div class="container">
+    <div class="row chills">
+        
+    <div class="col-sm-6 col-md-4 mt-2 mb-2">
+    <img class="img" src="https://collegeinfogeek.com/wp-content/uploads/2020/01/best-note-taking-apps-for-ipad-featured.jpg">
+</div>
+    <div class="col-sm-6 col-md-4 mt-2 mb-2">
+    <img class="img" src="https://images.direct.money.pl/articles/thumb/606x287_fit_in_4f1eaf61cbeea6086a8c0bbff788a1ab.jpeg">
+</div>
+    <div class="col-sm-6 col-md-4 mt-2 mb-2 offset-sm-3 offset-md-0">
+    <img class="img" src="https://assets.entrepreneur.com/content/3x2/2000/1643009401-kelly-sikkema-LM17xCofKA0-unsplash.jpg?auto=webp&quality=95&crop=16:9&width=675"></div></div></div></div>
